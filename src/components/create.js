@@ -5,21 +5,33 @@ export default class Create extends Component {
     super(props);
     this.state = { personName: "", businessName: "", gstNum: "" };
   }
+
+  onSubmit = e => {
+    // the functions here not use const, coz it is a function in a class(?why then not need?)
+    e.preventDefault();
+    const data = {
+      personName: this.state.personName,
+      businessName: this.state.businessName,
+      gstNum: this.state.gstNum
+    };
+    console.log(
+      `The values are ${this.state.personName}, ${
+        this.state.businessName
+      }, and ${this.state.gstNum}`
+    );
+    this.setState({
+      personName: "",
+      businessName: "",
+      gstNum: ""
+    });
+  };
+
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
     const { personName, businessName, gstNum } = this.state;
-
-    const onSubmit = e => {
-      e.preventDefault();
-      const data = {
-        personName,
-        businessName,
-        gstNum
-      };
-    };
-
-    const onChange = e => {
-      this.setState({ [e.target.name]: e.target.value });
-    };
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -29,7 +41,7 @@ export default class Create extends Component {
             type="text"
             onChange={this.onChange}
             name="personName"
-            value={businessName}
+            value={personName}
           />
         </div>
         <div>
@@ -50,7 +62,7 @@ export default class Create extends Component {
             value={gstNum}
           />
         </div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit to Add" />
       </form>
     );
   }
