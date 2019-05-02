@@ -1,4 +1,4 @@
-//? dif btw res.send and res.json, when use which
+//? dif btw res.send and res.json and console.log , when to use which one
 const express = require("express");
 const businessRoutes = express.Router(); //originally i named as businessRouter, but found that broutes is better
 
