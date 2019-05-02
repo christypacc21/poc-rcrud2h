@@ -6,7 +6,7 @@ const businessRoutes = express.Router(); //originally i named as businessRouter,
 let Business = require("../models/business.model");
 
 // Defined store route
-businessRoutes.route("add").post((req, res) => {
+businessRoutes.route("/add").post((req, res) => {
   let business = new Business(req.body);
   business
     .save()
