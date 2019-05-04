@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import TableRow from "./TableRow";
 
-export default class Index extends Component {
+class Index extends Component {
   constructor(props) {
     super(props);
     this.state = { business: [] };
@@ -43,3 +43,5 @@ export default class Index extends Component {
     );
   }
 }
+
+export default Index;

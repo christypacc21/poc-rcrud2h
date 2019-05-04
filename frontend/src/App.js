@@ -36,7 +36,6 @@ function App() {
           </div>
         </nav>
         <br />
-        <h1>Start</h1>
         <Switch>
           <Route exact path="/create" component={Create} />
           <Route path="/edit/:id" component={Edit} />
