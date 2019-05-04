@@ -2,7 +2,6 @@ import React from "react";
 
 const TableRow = items => {
   const { personName, businessName, gstNum } = items.items;
-  // console.log("haha", personName);
   return (
     <tr>
       <td>{personName}</td>

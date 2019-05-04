@@ -12,7 +12,6 @@ export default class Index extends Component {
     axios
       .get("http://localhost:5000/business")
       .then(res => {
-        // console.log("qqeweqweqwe", res.data); //.data
         this.setState({ business: res.data });
       })
       .catch(err => console.log(err));
@@ -20,7 +19,6 @@ export default class Index extends Component {
 
   tabRow = () => {
     //rmb to return here (?map, filter, reduce those all needs return?)
-    // console.log("====", this.state.business);
     return this.state.business.map((items, i) => {
       return <TableRow items={items} key={i} />;
     });
