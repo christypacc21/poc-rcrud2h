@@ -4,7 +4,12 @@ import axios from "axios";
 export default class Create extends Component {
   constructor(props) {
     super(props);
-    this.state = { personName: "", businessName: "", gstNum: "" };
+    this.state = {
+      personName: "",
+      businessName: "",
+      gstNum: "",
+      greenMsg: false
+    };
   }
 
   onSubmit = e => {
@@ -23,7 +28,10 @@ export default class Create extends Component {
 
     axios
       .post("http://localhost:5000/business/add", data)
-      .then(res => console.log(res.data))
+      .then(res => {
+        console.log(res.data);
+        this.setState({ greenMsg: true });
+      })
       .catch(err => console.log("cannot add data:", err));
 
     this.setState({
@@ -38,10 +46,11 @@ export default class Create extends Component {
   };
 
   render() {
-    const { personName, businessName, gstNum } = this.state;
-
+    const { personName, businessName, gstNum, greenMsg } = this.state;
     return (
       <div>
+        {greenMsg ? <GreenMsg /> : ""}
+        <br />
         <form onSubmit={this.onSubmit}>
           <div>
             <label>Add Person Name</label>
@@ -76,3 +85,11 @@ export default class Create extends Component {
     );
   }
 }
+
+const GreenMsg = () => {
+  return (
+    <div style={{ backgroundColor: "lightgreen" }}>
+      <h2 style={{ textAlign: "center" }}>Succesfully Added Data!</h2>
+    </div>
+  );
+};
