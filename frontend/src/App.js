@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
+import Home from "./components/home";
 import Create from "./components/create";
 import Edit from "./components/edit";
 import Index from "./components/index";
@@ -36,8 +37,8 @@ function App() {
           </div>
         </nav>
         <br />
-        <h1>Start</h1>
         <Switch>
+          <Route exact path="/" component={Home} />
           <Route exact path="/create" component={Create} />
           <Route path="/edit/:id" component={Edit} />
           <Route path="/index" component={Index} />
