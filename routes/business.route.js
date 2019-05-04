@@ -64,11 +64,11 @@ businessRoutes.route("/update/:id").post((req, res) => {
 // Defined delete | remove | destroy route
 businessRoutes.route("/delete/:id").get((req, res) => {
   //star - here use get not post
-  Business.findByIdAndRemove({ _id: req.params.id }, (err, business) => {
+  Business.findOneAndDelete({ _id: req.params.id }, (err, business) => {
     //?actually do we need return here inside the if, to stop the func incase err
     if (err) res.json(err);
     //star the ifelse style
-    else res.send("Successfully removed:", business);
+    else res.status(200).send("Successfully removed");
   });
 });
 
