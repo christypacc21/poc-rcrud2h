@@ -23,7 +23,8 @@ export default class Create extends Component {
 
     axios
       .post("http://localhost:5000/business/add", data)
-      .then(res => console.log(res.data));
+      .then(res => console.log(res.data))
+      .catch(err => console.log("cannot add data:", err));
 
     this.setState({
       personName: "",
